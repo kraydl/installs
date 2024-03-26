@@ -1,5 +1,3 @@
-# install bookstack on portainer
-
 version: "2"
 
 services:
