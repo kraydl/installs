@@ -1,0 +1,20 @@
+# How to install proxmox pbs-client for console backups
+# SSH to the machine you will be backing up FROM
+
+ssh root@192.168.0.113
+login kraydl
+
+# Get the key
+wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg
+
+# Add the repository
+nano /etc/apt/sources.list.d/pbs-client.list
+
+# Insert
+deb [arch=amd64] http://download.proxmox.com/debian/pbs-client bookworm main
+# Ctrl-O, enter, Ctrl-X
+
+http://192.168.0.116/link/14#bkmrk-%23-install-the-client
+ 
+# Install the client
+apt install proxmox-backup-client
