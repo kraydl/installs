@@ -1,0 +1,60 @@
+# Installing Pi-hole in Alpine Linux
+
+
+# Install Alpine Linux --------------------
+# image is at:
+# https://www.alpinelinux.org/downloads/
+
+# Run:  setup-alpine-virt-3
+
+# Near the end get the VIRTUAL x86_64 image
+# alpine-virt-3.19.1-x86_64.iso
+
+# create the vm in pve
+# pve cpu 1
+# pve mem 1gb
+# pve disk space 10g
+
+# Install Pi-hole: ---------------------
+# https://gitlab.com/yvelon/pi-hole
+
+# Run: setup-pihole
+# us
+# us
+# ivy.pihole.lan
+# eth0
+# dhcp
+# n
+# EST
+# none
+
+
+
+
+# In a console:
+apk add bash
+apk add git
+
+git clone https://gitlab.com/yvelon/pi-hole
+
+nano /etc/apk/repositories
+# make it look like this:
+# # /media/cdrom/apks
+# # http://mirror.math.princeton.edu/pub/alpinelinux/v3.19/main
+# http://mirror.math.princeton.edu/pub/alpinelinux/edge/main
+# http://mirror.math.princeton.edu/pub/alpinelinux/v3.19/community
+
+# cd /root/pi-hole
+bash automated\ install/basic-install.sh
+
+# take note of pi-hole admin password
+
+# To add qemu:
+apk add qemu-guest-agent
+rc-update add qemu-guest-agent
+poweroff
+# reboot in pve
+
+
+# userful doc
+# https://wiki.alpinelinux.org/wiki/OpenRC
